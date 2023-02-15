@@ -140,5 +140,27 @@ void UInGameHUD::RotationToTranslation(FRotator A, FRotator B, double MaxWidgetT
 }
 #pragma endregion
 
+#pragma region Map Helper Functions
+void UInGameHUD::ConvertLocationToPosition(FVector Location, AActor* NWPoint, FVector2D& Position)
+{
+	double X = abs(Location.Y - NWPoint->GetActorLocation().Y);
+	double Y = abs(Location.X - NWPoint->GetActorLocation().X);
+	Position.X = X;
+	Position.Y = Y;
+}
+
+void UInGameHUD::GetHeight(AActor* NWPoint, AActor* SEPoint, double& Height)
+{
+	Height = abs(SEPoint->GetActorLocation().X - NWPoint->GetActorLocation().X);
+}
+
+void UInGameHUD::GetWidth(AActor* NWPoint, AActor* SEPoint, double& Width)
+{
+	Width = abs(SEPoint->GetActorLocation().Y - NWPoint->GetActorLocation().Y);
+}
+
+#pragma endregion
+
+
 
 
